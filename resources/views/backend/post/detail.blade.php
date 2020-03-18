@@ -5,7 +5,12 @@
     <div class="card">
         <div class="card-body">
             <div class="card">
-                <div class="card-header">Category Name : {{$post->post_name}}</div>
+                <div class="card-header">
+                    {{$post->title}}
+                    <div class="float-right">
+                        <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
+                    </div>
+                </div>
                 <div class="card-body">
                     {{-- <ul class="list-group">
                         @foreach ($category['parentOf'] as $key => $value)
@@ -13,9 +18,8 @@
                                 <a href="{{route('admin.categories.detail' , $value->slug )}}">{{$value->name}} {{$value->id}}</a>
                             </li>
                         @endforeach
-
-
                     </ul> --}}
+                {!! $post->content !!}
                 </div>
             </div>
 

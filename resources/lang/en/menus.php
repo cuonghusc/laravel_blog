@@ -46,7 +46,7 @@ return [
                 'create' => 'Create Post',
                 'edit' => 'Edit Post',
                 'management' => 'Post Management',
-                'detail' => 'Post Detail',
+                'detail' => 'Post Detail'
             ],
             'users' => [
                 'all' => 'All Users',

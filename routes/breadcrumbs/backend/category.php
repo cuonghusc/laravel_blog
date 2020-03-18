@@ -5,7 +5,7 @@ Breadcrumbs::for('admin.categories.list', function ($trail) {
 });
 
 Breadcrumbs::for('admin.categories.showFormAdd', function ($trail) {
-    $trail->parent('admin.categories.list');
+    $trail->parent('admin.categories.list');//Category Management
     $trail->push(__('menus.backend.access.category.create'), route('admin.categories.showFormAdd'));
 });
 

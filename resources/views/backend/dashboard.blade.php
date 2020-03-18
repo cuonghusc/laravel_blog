@@ -20,7 +20,7 @@
 
 
                 <div class="card-footer">
-                    ád
+                    {{ $logged_in_user->name }}
                 </div>
 
 

@@ -33,9 +33,7 @@ class PostRepository extends BaseRepository
     public function getAjaxDataTable()
     {
         try {
-
             $post = $this->model::select('id','thumbnail','type_thumb','title','slug','created_at','updated_at','video')->with('getThumbnail')->get();
-
             return Datatables::of($post)
                 ->editColumn('thumbnail', function ($post) {
                     $idTable = '#post_table_'.$post["id"];
@@ -43,7 +41,6 @@ class PostRepository extends BaseRepository
                         if ($post['type_thumb'] == 'image') {
                             $media = '<script>
                                     var media = window.convertMedia("'.env('APP_URL').$post->getThumbnail->getUrl('thumb').'",false);
-
                                     $("'.$idTable.'").find("td").eq(2).html(media);
                                     $("'.$idTable.'").find("td").eq(2).find("img").width("auto").height(50);
 
@@ -55,17 +52,11 @@ class PostRepository extends BaseRepository
                         else {
                             $media = '<script>
                                     var video = `<a class="various fancybox fancybox.iframe" href="'.$post['video'].'">Video</a>`;
-
-
                                     $("'.$idTable.'").find("td").eq(2).html(video);
                                     $("'.$idTable.'").find("td").eq(2).find("a").fancybox();
-
-
                                 </script>';
                             return $media;
-
                         }
-
                     }else {
                         return  '<img src="https://fakeimg.pl/50x50/?text=No Image">';
                     }
@@ -104,8 +95,6 @@ class PostRepository extends BaseRepository
         } catch (\Exception $e) {
             return $e->getMessage();
         }
-
-
     }
 
     /**
@@ -140,7 +129,7 @@ class PostRepository extends BaseRepository
 
             return $e->getMessage();
         }
-    }
+    }    
 
     /**
      * [getRelatedSlugs Relate Slug].
@@ -206,15 +195,10 @@ class PostRepository extends BaseRepository
     public function editPost($data)
     {
         try {
-
-
-
             $postEdit = $this->model::find($data['id']);
-
             if (!$postEdit) {
                 return false;
             }
-
             $dataReturn = DB::transaction(function () use ($data , $postEdit) {
                 $update = $postEdit->update($data);
 
@@ -225,17 +209,20 @@ class PostRepository extends BaseRepository
                     $postEdit->tags()->sync($data['tag_id']);
                 }
                 return $postEdit;
-
             });
-
             return $dataReturn;
-
-
         } catch (\Exception $e) {
             dd($e->getMessage());
             return $e->getMessage();
         }
+    }
+    public function testAjax()
+    {
+        try {
 
-
+            return $this->model::select('id','thumbnail','type_thumb','title','slug','created_at','updated_at','video')->get();
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
     }
 }

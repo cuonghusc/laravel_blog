@@ -11,3 +11,4 @@ Route::post('posts/add', [PostsController::class, 'storePost'])->name('posts.add
 Route::post('posts/edit', [PostsController::class, 'editPost'])->name('posts.edit');
 Route::delete('posts/destroy', [PostsController::class, 'destroy'])->name('posts.destroy');
 Route::post('posts/ajaxData', [PostsController::class, 'ajaxDataTable'])->name('posts.ajax');
+Route::get('posts/test', [PostsController::class, 'all'])->name('posts.test');

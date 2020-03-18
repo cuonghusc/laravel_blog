@@ -196,6 +196,15 @@ class PostsController extends Controller
         if (!$post) {
             \App::abort(404);
         }
+        // dump($post);
+        // die();
         return view('backend/post/detail')->withPost($post);
+    }
+
+    public function all()
+    {
+        echo "<pre>";
+        var_dump($this->PostRepository->testAjax()['items']);
+        // return $this->PostRepository->testAjax();
     }
 }

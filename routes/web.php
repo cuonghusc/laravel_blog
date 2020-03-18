@@ -36,3 +36,15 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'as' => 'admin.', '
 
     include_route_files(__DIR__.'/backend/');
 });
+
+
+// Route::middleware('admin')
+//     ->namespace('Backend')
+//     ->prefix('admin')
+//     ->as('admin.')
+//     ->group(function(){
+
+//         Route::get('theme-option', [ThemeOptionController::class, 'index'])->name('option.index');
+
+//         include_route_files(__DIR__.'/backend/');
+// });

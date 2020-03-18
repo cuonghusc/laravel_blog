@@ -92,7 +92,6 @@ class CategoryRepository extends BaseRepository
             }
             $cacheCategory[] = $categoryNew;
             Cache::forever('category', $cacheCategory);
-
             return $categoryNew;
         } catch (\Exception $e) {
             return $e->getMessage();

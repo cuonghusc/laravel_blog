@@ -67,16 +67,15 @@ class CategoriesController extends Controller
      * [storeCategory Save Category].
      */
     public function storeCategory(CategoryRequest $request)
-    {
+    {        
         $data = $request->All();
         $data['slug'] = $this->createSlug($data['name']);
 
         $save = $this->CategoryRepository->storeCategory($data);
-
-        if (! $save->id) {
+        
+        if (! $save->id) {            
             \App::abort(500, 'Some Error');
         }
-
         return redirect()->route('admin.categories.list')->withFlashSuccess(__('alerts.backend.category.created'));
     }
 
