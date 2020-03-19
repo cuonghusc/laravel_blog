@@ -30,6 +30,7 @@ return [
          */
 
         'en' => ['en', 'en_US', false],
-        'ja' => ['ja', 'ja-JP', true],
+        // 'ja' => ['ja', 'ja-JP', true],
+        'vi' => ['vi', 'vi_Vi', true],
     ],
 ];
